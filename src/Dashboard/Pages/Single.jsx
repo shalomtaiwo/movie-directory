@@ -4,6 +4,8 @@ import {
 	Flex,
 	Rating,
 	createStyles,
+	Center,
+	Loader,
 } from "@mantine/core";
 import useAxios from "axios-hooks";
 import SingleDetails from "./SingleDetails";
@@ -56,8 +58,7 @@ const Single = () => {
 		url: `https://api.themoviedb.org/3/movie/${getId()}?append_to_response=videos`,
 		headers: {
 			accept: "application/json",
-			Authorization:
-				`Bearer ${import.meta.env.VITE_API_TOKEN}`,
+			Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
 		},
 	});
 
@@ -84,7 +85,12 @@ const Single = () => {
 		}
 	};
 
-	if (loading) return <p>Loading...</p>;
+	if (loading)
+		return (
+			<Center mt={40}>
+				<Loader color="red" />{" "}
+			</Center>
+		);
 	if (error && error.message === "Request failed with status code 404")
 		return <NotFoundMovie />;
 	if (error && error.message !== "Request failed with status code 404")

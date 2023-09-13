@@ -6,6 +6,7 @@ import {
 	Center,
 	Flex,
 	Grid,
+	Loader,
 	Paper,
 	Stack,
 	Text,
@@ -74,8 +75,8 @@ const SingleDetails = ({ data }) => {
 			);
 	const top3Writers = !loading && writers?.slice(0, 3);
 
-	if (error) return <div>Error loading crews and casts.</div>;
-	if (loading) return <div>Loading...</div>;
+	if (error) return <Center>Error loading crews and casts.</Center>;
+	if (loading) return <Center mt={40}><Loader color="red" /> </Center>
 
 	return (
 		<Paper
