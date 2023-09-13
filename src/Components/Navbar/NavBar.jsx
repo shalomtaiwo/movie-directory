@@ -60,7 +60,7 @@ export function Navbar({ children }) {
 		<Header
 			height={HEADER_HEIGHT}
 			sx={{ border: 0, backgroundColor: "transparent !important" }}
-			mb={100}
+			mb={60}
 		>
 			<Center
 				spacing={5}
