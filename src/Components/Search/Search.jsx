@@ -1,5 +1,8 @@
 import {
 	Center,
+	CloseButton,
+	Flex,
+	Group,
 	Loader,
 	Paper,
 	Text,
@@ -68,7 +71,12 @@ const Search = () => {
 		/* eslint-disable-next-line react-hooks/exhaustive-deps */
 	}, [query]);
 
-	if (error) return <Center mt={'150px'}><ServerError error={error.status} /></Center>;
+	if (error)
+		return (
+			<Center mt={"150px"}>
+				<ServerError error={error.status} />
+			</Center>
+		);
 
 	return (
 		<>
@@ -79,7 +87,21 @@ const Search = () => {
 				onFocus={() => setFocus(true)}
 				onChange={(e) => setQuery(e.target.value)}
 				className={classes.auto}
-				rightSection={<IconSearch color="white" />}
+				rightSection={
+					<Flex align={"center"}>
+						{query !== "" && (
+							<CloseButton
+								color={"red"}
+								iconSize={20}
+								onClick={() => setQuery("")}
+							/>
+						)}{" "}
+						<IconSearch
+							color="white"
+							size={19}
+						/>
+					</Flex>
+				}
 			/>
 
 			{focus && (
