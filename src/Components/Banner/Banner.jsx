@@ -99,7 +99,7 @@ export function Banner({ children }) {
 	const { classes } = useStyles();
 	return (
 		<div className={classes.root}>
-			<Container size="1200px">
+			<Container size="lg">
 				<Paper>
 					<Navbar>
 						{children}
