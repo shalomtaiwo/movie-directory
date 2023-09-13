@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import {
+	Accordion,
 	Anchor,
 	BackgroundImage,
 	Button,
@@ -44,8 +45,7 @@ const SingleDetails = ({ data }) => {
 		url: `https://api.themoviedb.org/3/movie/${data?.id}/credits`,
 		headers: {
 			accept: "application/json",
-			Authorization:
-				`Bearer ${import.meta.env.VITE_API_TOKEN}`,
+			Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
 		},
 	});
 
@@ -76,7 +76,12 @@ const SingleDetails = ({ data }) => {
 	const top3Writers = !loading && writers?.slice(0, 3);
 
 	if (error) return <Center>Error loading crews and casts.</Center>;
-	if (loading) return <Center mt={40}><Loader color="red" /> </Center>
+	if (loading)
+		return (
+			<Center mt={40}>
+				<Loader color="red" />{" "}
+			</Center>
+		);
 
 	return (
 		<Paper
@@ -131,6 +136,18 @@ const SingleDetails = ({ data }) => {
 								: "N/A"}
 						</Text>
 					</Stack>
+					<Flex w={'100%'} mt={25}>
+						<Button size="17px" pr={15} pl={15} radius={8} className={classes.button}>Top rated movie #65</Button>
+						<Accordion
+							variant="contained"
+							disableChevronRotation
+							w={'inherit'}
+						>
+							<Accordion.Item value="nominations">
+								<Accordion.Control>Awards 9 nominations</Accordion.Control>
+							</Accordion.Item>
+						</Accordion>
+					</Flex>
 				</Grid.Col>
 				<Grid.Col span={"auto"}>
 					<Center>
