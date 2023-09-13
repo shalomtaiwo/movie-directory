@@ -1,5 +1,6 @@
 import { Banner } from "../Components/Banner/Banner";
 import Featured from "../Components/Featured/Featured";
+import { FooterCentered } from "../Components/Footer/Footer";
 import Search from "../Components/Search/Search";
 
 const Home = () => {
@@ -10,6 +11,8 @@ const Home = () => {
 			</Banner>
 
             <Featured />
+
+			<FooterCentered />
 		</div>
 	);
 };
