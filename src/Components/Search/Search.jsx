@@ -2,7 +2,6 @@ import {
 	Center,
 	CloseButton,
 	Flex,
-	Group,
 	Loader,
 	Paper,
 	Text,
