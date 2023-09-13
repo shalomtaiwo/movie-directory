@@ -7,6 +7,7 @@ import {
 	Group,
 	rem,
 } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -48,6 +49,8 @@ const useStyles = createStyles((theme) => ({
 export function NotFoundMovie() {
 	const { classes } = useStyles();
 
+	const navigate = useNavigate();
+
 	return (
 		<Container className={classes.root}>
 			<div className={classes.label}>404</div>
@@ -65,6 +68,7 @@ export function NotFoundMovie() {
 					variant="subtle"
 					size="md"
                     color="gray"
+					onClick={()=>navigate('/movies')}
 				>
 					Search for new movie
 				</Button>
