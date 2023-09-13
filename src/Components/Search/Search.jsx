@@ -33,14 +33,14 @@ const Search = () => {
 
 	const [query, setQuery] = React.useState("");
 	const [movies, setMovies] = React.useState([]);
+	const [focus, setFocus] = React.useState(false);
 
 	const [{ data, loading, error }] = useAxios({
 		method: "GET",
 		url: `https://api.themoviedb.org/3/search/movie`,
 		headers: {
 			accept: "application/json",
-			Authorization:
-				`Bearer ${import.meta.env.VITE_API_TOKEN}`,
+			Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
 		},
 		params: {
 			include_adult: false,
@@ -68,7 +68,7 @@ const Search = () => {
 		/* eslint-disable-next-line react-hooks/exhaustive-deps */
 	}, [query]);
 
-	if (error) return <ServerError error={error.status} />;
+	if (error) return <Center mt={'150px'}><ServerError error={error.status} /></Center>;
 
 	return (
 		<>
@@ -76,53 +76,58 @@ const Search = () => {
 				type="text"
 				placeholder="What do you want to watch?"
 				value={query}
+				onFocus={() => setFocus(true)}
 				onChange={(e) => setQuery(e.target.value)}
 				className={classes.auto}
 				rightSection={<IconSearch color="white" />}
 			/>
 
-			{loading ? (
-				<Paper
-					className="dropdown"
-					maw={500}
-				>
-					<Center
-						className="dropdown-item"
-						w={500}
-					>
-						<Loader color="red" />
-					</Center>
-				</Paper>
-			) : (
-				<div className="dropdown">
-					{movies?.length > 0 ? (
-						movies?.map((movie) => (
-							<Paper
-								key={movie?.id}
+			{focus && (
+				<>
+					{loading ? (
+						<Paper
+							className="dropdown"
+							maw={500}
+						>
+							<Center
 								className="dropdown-item"
-								maw={500}
+								w={500}
 							>
-								<SearchCard
-									id={movie?.id}
-									release_date={movie?.release_date}
-									poster_path={movie?.poster_path}
-									title={movie?.title}
-								/>
-							</Paper>
-						))
+								<Loader color="red" />
+							</Center>
+						</Paper>
 					) : (
-						<>
-							{query === "" ? null : (
-								<Text
-									className="dropdown-item"
-									w={500}
-								>
-									No related movie found.
-								</Text>
+						<div className="dropdown">
+							{movies?.length > 0 ? (
+								movies?.map((movie) => (
+									<Paper
+										key={movie?.id}
+										className="dropdown-item"
+										maw={500}
+									>
+										<SearchCard
+											id={movie?.id}
+											release_date={movie?.release_date}
+											poster_path={movie?.poster_path}
+											title={movie?.title}
+										/>
+									</Paper>
+								))
+							) : (
+								<>
+									{query === "" ? null : (
+										<Text
+											className="dropdown-item"
+											w={500}
+										>
+											No related movie found.
+										</Text>
+									)}
+								</>
 							)}
-						</>
+						</div>
 					)}
-				</div>
+				</>
 			)}
 		</>
 	);

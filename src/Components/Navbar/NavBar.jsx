@@ -25,9 +25,22 @@ const useStyles = createStyles((theme) => ({
 		alignItems: "center",
 		backgroundColor: "transparent",
 		padding: 0,
+		[theme.fn.smallerThan("sm")]: {
+			justifyContent: "center",
+		},
 	},
 
 	burger: {
+		[theme.fn.largerThan("sm")]: {
+			display: "none",
+		},
+	},
+	children: {
+		[theme.fn.smallerThan("sm")]: {
+			display: "none",
+		},
+	},
+	newChildren: {
 		[theme.fn.largerThan("sm")]: {
 			display: "none",
 		},
@@ -49,6 +62,13 @@ export function Navbar({ children }) {
 			sx={{ border: 0, backgroundColor: "transparent !important" }}
 			mb={100}
 		>
+			<Center
+				spacing={5}
+				pt={10}
+				className={classes.newChildren}
+			>
+				<Center>{children}</Center>
+			</Center>
 			<Container
 				className={classes.inner}
 				fluid
@@ -65,11 +85,14 @@ export function Navbar({ children }) {
 				</Group>
 				<Group
 					spacing={5}
-					className={classes.links}
+					className={classes.children}
 				>
 					<Center>{children}</Center>
 				</Group>
-				<Anchor className={classes.signIn} href="/movies">
+				<Anchor
+					className={classes.signIn}
+					href="/movies"
+				>
 					<Flex align={"center"}>
 						<Text color="white">Sign in</Text>
 						<ThemeIcon

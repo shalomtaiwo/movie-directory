@@ -1,9 +1,8 @@
 import {
 	AspectRatio,
-	Button,
+	Text,
 	Flex,
 	Rating,
-	Text,
 	createStyles,
 } from "@mantine/core";
 import useAxios from "axios-hooks";
@@ -63,9 +62,9 @@ const Single = () => {
 	});
 
 	// Convert date to UTC
-	// const toUTC = (dateString) => {
-	// 	return new Date(dateString + "T00:00:00Z").toISOString();
-	// };
+	const toUTC = (dateString) => {
+		return new Date(dateString + "T00:00:00Z").toISOString();
+	};
 
 	// Convert abbreviate numbers
 	const abbreviateNumber = (number) => {
@@ -118,7 +117,7 @@ const Single = () => {
 					align={"center"}
 					className={classes.flexTwo}
 				>
-					<Button
+					<Text
 						mr={8}
 						size={18}
 						fw={500}
@@ -126,10 +125,10 @@ const Single = () => {
 						data-testid={"movie-title"}
 					>
 						{data?.title}
-					</Button>
+					</Text>
 					<Flex align={"center"}>
 						<span style={{ fontSize: "4px", marginTop: "5px" }}>⚫</span>
-						<Button
+						<Text
 							ml={8}
 							mr={8}
 							size={18}
@@ -137,10 +136,10 @@ const Single = () => {
 							variant="unstyled"
 							data-testid={"movie-release-date"}
 						>
-							{data?.release_date}
-						</Button>
+							{toUTC(data?.release_date)}
+						</Text>
 						<span style={{ fontSize: "4px", marginTop: "5px" }}>⚫</span>
-						<Button
+						<Text
 							ml={8}
 							mr={8}
 							size={18}
@@ -148,9 +147,9 @@ const Single = () => {
 							variant="unstyled"
 						>
 							PG-13
-						</Button>
+						</Text>
 						<span style={{ fontSize: "4px", marginTop: "5px" }}>⚫</span>
-						<Button
+						<Text
 							ml={8}
 							mr={8}
 							size={18}
@@ -160,7 +159,7 @@ const Single = () => {
 						>
 							{data?.runtime}
 							{"m"}
-						</Button>
+						</Text>
 					</Flex>
 				</Flex>
 
