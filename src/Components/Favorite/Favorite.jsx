@@ -3,8 +3,7 @@ import { toggleFavorite } from "../../Utils/toggleFavorite";
 import { ActionIcon } from "@mantine/core";
 import { IconHeartFilled } from "@tabler/icons-react";
 
-const Favorite = ({ movie, classes, newColor }) => {
-	
+const Favorite = ({ movie, classes, newColor, reload }) => {
 	const initialFavorites =
 		JSON.parse(localStorage.getItem("favoriteMovies")) || [];
 	const [favorites, setFavorites] = useState(initialFavorites);
@@ -16,8 +15,11 @@ const Favorite = ({ movie, classes, newColor }) => {
 	const handleIconClick = (movieid) => {
 		toggleFavorite(movieid);
 		setFavorites((prevFavorites) => {
-			if (isFavorite) {
+			if (isFavorite && reload !== "true") {
 				return prevFavorites.filter((favId) => favId !== movieid);
+			} else if (isFavorite && reload === "true") {
+				prevFavorites.filter((favId) => favId !== movieid);
+				window.location.reload();
 			} else {
 				return [...prevFavorites, movieid];
 			}

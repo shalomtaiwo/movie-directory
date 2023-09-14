@@ -64,11 +64,14 @@ const Single = () => {
 
 	// Convert date to UTC
 	const toUTC = (dateString) => {
-		console.log(dateString)
-		if (!dateString) {
-			return "N/A";
-		} else {
-			return new Date(dateString + "T00:00:00Z").toISOString();
+		try {
+			if (!dateString) {
+				return "N/A";
+			} else {
+				return new Date(dateString + "T00:00:00Z").toISOString();
+			}
+		} catch (error) {
+			console.log(error)
 		}
 	};
 

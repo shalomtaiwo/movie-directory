@@ -29,7 +29,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, reload }) {
 	const { classes } = useStyles();
 
 	return (
@@ -50,7 +50,7 @@ export default function MovieCard({ movie }) {
 						data-testid={"movie-poster"}
 					/>
 				</Anchor>
-				<Favorite movie={movie} classes={classes.rating} />
+				<Favorite movie={movie} classes={classes.rating} reload={reload} />
 
 			</Card.Section>
 			<Text

@@ -1,7 +1,17 @@
 import MovieCard from "../Card/MovieCard";
 import useAxios from "axios-hooks";
-import { Container, Grid, createStyles, rem } from "@mantine/core";
+import {
+	Anchor,
+	Button,
+	Container,
+	Flex,
+	Grid,
+	Title,
+	createStyles,
+	rem,
+} from "@mantine/core";
 import { ServerError } from "../Empty/Error";
+import { IconChevronRight } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -72,10 +82,8 @@ const Featured = () => {
 		url: "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
 		headers: {
 			accept: "application/json",
-			Authorization:
-				`Bearer ${apiToken}`,
+			Authorization: `Bearer ${apiToken}`,
 		},
-        
 	});
 	const movieData = data?.results;
 
@@ -83,25 +91,45 @@ const Featured = () => {
 	if (error) return <ServerError error={error.status} />;
 
 	return (
-        <div className={classes.root}>
+		<div className={classes.root}>
 			<Container size="lg">
 				<div className={classes.inner}>
 					<div className={classes.content}>
-                    <Grid gutter={40}>
-					{!loading &&
-						(movieData.slice(0, 10)).map((movie, index) => {
-							return (
-								<Grid.Col
-									key={index}
-                                    sm={6}
-									md={4}
-									lg={3}
+						<Flex
+							w={"100%"}
+							justify={"space-between"}
+							align={"center"}
+							mb={35}
+						>
+							<Title size={36}>Featured Movie</Title>
+							<Anchor
+								color="red"
+								href="/movies"
+							>
+								<Button
+									variant="unstyled"
+									style={{color: '#BE123C'}}
+									rightIcon={<IconChevronRight color="#BE123C" size={16}/>}
 								>
-									<MovieCard movie={movie} />
-								</Grid.Col>
-							);
-						})}
-				</Grid>
+									See More
+								</Button>
+							</Anchor>
+						</Flex>
+						<Grid gutter={40}>
+							{!loading &&
+								movieData.slice(0, 10).map((movie, index) => {
+									return (
+										<Grid.Col
+											key={index}
+											sm={6}
+											md={4}
+											lg={3}
+										>
+											<MovieCard movie={movie} />
+										</Grid.Col>
+									);
+								})}
+						</Grid>
 					</div>
 				</div>
 			</Container>
