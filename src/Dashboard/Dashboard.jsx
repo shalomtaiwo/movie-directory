@@ -1,25 +1,11 @@
-import {
-	AppShell,
-	useMantineTheme,
-} from "@mantine/core";
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "../Components/Sidebar/Sidebar";
+import Layout from "../Components/Layout/Layout";
 
 export default function Dashboard() {
-	const theme = useMantineTheme();
-	return (
-		<AppShell
-			styles={{
-				main: {
-					background:theme.colors.white,
-				},
-			}}
 
-			navbar={
-					<Sidebar theme={theme} />
-			}
-		>
+	return (
+		<Layout>
 			<Outlet />
-		</AppShell>
+		</Layout>
 	);
 }

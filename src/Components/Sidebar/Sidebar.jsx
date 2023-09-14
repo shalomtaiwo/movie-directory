@@ -14,6 +14,7 @@ import {
 	IconDeviceTv,
 	IconCalendar,
 	IconLogout,
+	IconHeartPlus,
 } from "@tabler/icons-react";
 import Logo from "../Navbar/Logo";
 import { LinksGroup } from "./SidebarLinks";
@@ -22,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 const mockdata = [
 	{ label: "Home", icon: IconHome, link: "/" },
 	{ label: "Movies", icon: IconVideo, link: "/movies" },
+	{ label: "My Favorites", icon: IconHeartPlus, link: "/my_favorites" },
 	{ label: "Tv Series", icon: IconDeviceTv, link: "/tv_series" },
 	{ label: "Upcoming", icon: IconCalendar, link: "/upcoming" },
 ];

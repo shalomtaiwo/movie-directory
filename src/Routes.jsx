@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Single from "./Dashboard/Pages/Single";
 import Empty from "./Components/Empty/Empty";
 import { NoSearch } from "./Dashboard/NoSearch";
+import MyFavorites from "./Dashboard/Pages/MyFavorites";
 
 const Routes = () => {
 	return (
@@ -25,6 +26,10 @@ const Routes = () => {
 					element={<Single />}
 				/>
 			</Route>
+			<Route
+				path="/my_favorites"
+				element={<MyFavorites />}
+			/>
 			<Route
 				path="*"
 				element={<Empty />}

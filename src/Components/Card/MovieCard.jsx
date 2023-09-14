@@ -2,15 +2,13 @@ import {
 	createStyles,
 	Card,
 	Image,
-	ActionIcon,
 	Group,
 	Text,
 	rem,
 	Anchor,
 } from "@mantine/core";
 import Rating from "../Rating/Rating";
-import { IconHeartFilled } from "@tabler/icons-react";
-import { useState } from "react";
+import Favorite from "../Favorite/Favorite";
 
 const useStyles = createStyles((theme) => ({
 	card: {
@@ -30,49 +28,9 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-// Function to add or remove a movie ID from favorites
-function toggleFavorite(movieId) {
-	// Check if the local storage for favorites exists
-	let favorites = localStorage.getItem("favoriteMovies");
-	if (!favorites) {
-		favorites = [];
-	} else {
-		favorites = JSON.parse(favorites);
-	}
-
-	// Check if the movie ID is already in favorites
-	const index = favorites.indexOf(movieId);
-	if (index !== -1) {
-		// Movie ID exists, remove it
-		favorites.splice(index, 1);
-	} else {
-		// Movie ID doesn't exist, add it
-		favorites.push(movieId);
-	}
-	localStorage.setItem("favoriteMovies", JSON.stringify(favorites));
-}
 
 export default function MovieCard({ movie }) {
 	const { classes } = useStyles();
-
-	const initialFavorites =
-		JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-	const [favorites, setFavorites] = useState(initialFavorites);
-
-	const isFavorite = favorites.includes(movie.id);
-
-	const color = isFavorite ? "red" : "#F3F4F680";
-
-	const handleIconClick = (movieid) => {
-		toggleFavorite(movieid);
-		setFavorites((prevFavorites) => {
-			if (isFavorite) {
-				return prevFavorites.filter((favId) => favId !== movieid);
-			} else {
-				return [...prevFavorites, movieid];
-			}
-		});
-	};
 
 	return (
 		<Card
@@ -92,18 +50,9 @@ export default function MovieCard({ movie }) {
 						data-testid={"movie-poster"}
 					/>
 				</Anchor>
+				<Favorite movie={movie} classes={classes.rating} />
+
 			</Card.Section>
-
-			<ActionIcon
-				className={classes.rating}
-				radius={"xl"}
-				variant="filled"
-				bg={color}
-				onClick={() => handleIconClick(movie.id)}
-			>
-				<IconHeartFilled size={19} />
-			</ActionIcon>
-
 			<Text
 				mt="xs"
 				color="dimmed"

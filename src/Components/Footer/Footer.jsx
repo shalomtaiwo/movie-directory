@@ -120,7 +120,7 @@ export function FooterCentered() {
 				<Group className={classes.links}>{items}</Group>
 
 				<Group mt={20}>
-					<Text color="dimmed">© 2021 MovieBox by Adriana Eka Prayudha </Text>
+					<Text color="dimmed">© 2023 MovieBox by Shalom </Text>
 				</Group>
 			</div>
 		</div>

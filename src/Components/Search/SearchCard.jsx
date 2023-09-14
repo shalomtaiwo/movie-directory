@@ -7,6 +7,7 @@ import {
 	Anchor,
 	Badge,
 } from "@mantine/core";
+import Favorite from "../Favorite/Favorite";
 
 const useStyles = createStyles((theme) => ({
 	card: {
@@ -21,11 +22,22 @@ const useStyles = createStyles((theme) => ({
 	body: {
 		padding: theme.spacing.md,
 	},
+
+	fav: {
+		position: 'absolute',
+		top: '10px',
+		right: '10px',
+		border: '1px solid'
+	}
 }));
 
 /* eslint-disable-next-line react/prop-types */
 export function SearchCard({ poster_path, release_date, title, id }) {
 	const { classes } = useStyles();
+
+	const movie = {
+		id: id,
+	};
 	return (
 		<Card
 			withBorder
@@ -38,8 +50,12 @@ export function SearchCard({ poster_path, release_date, title, id }) {
 				spacing={0}
 			>
 				<Image
-					src={poster_path !== null ? `https://image.tmdb.org/t/p/w500${poster_path}` : null}
-                    withPlaceholder
+					src={
+						poster_path !== null
+							? `https://image.tmdb.org/t/p/w500${poster_path}`
+							: null
+					}
+					withPlaceholder
 					height={180}
 					width={140}
 				/>
@@ -64,11 +80,17 @@ export function SearchCard({ poster_path, release_date, title, id }) {
 						spacing="xs"
 					>
 						<Anchor href={`/movies/${id}`}>
-							<Badge color="red" size={20}>View more</Badge>
+							<Badge
+								color="red"
+								size={20}
+							>
+								View more
+							</Badge>
 						</Anchor>
 					</Group>
 				</div>
 			</Group>
+			<Favorite movie={movie} classes={classes.fav} newColor={'#575757'} />
 		</Card>
 	);
 }
