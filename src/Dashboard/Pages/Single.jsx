@@ -64,7 +64,12 @@ const Single = () => {
 
 	// Convert date to UTC
 	const toUTC = (dateString) => {
-		return new Date(dateString + "T00:00:00Z").toISOString();
+		console.log(dateString)
+		if (!dateString) {
+			return "N/A";
+		} else {
+			return new Date(dateString + "T00:00:00Z").toISOString();
+		}
 	};
 
 	// Convert abbreviate numbers
