@@ -142,7 +142,7 @@ const MyFavorites = () => {
 										key={index}
 									>
 										<Skeleton visible={loading}>
-											<MovieCard movie={movie} reload={'true'} />
+											<MovieCard movie={movie} reload={'true'} noshow={true} />
 										</Skeleton>
 									</Grid.Col>
 								))}

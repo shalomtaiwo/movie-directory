@@ -28,8 +28,7 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-
-export default function MovieCard({ movie, reload }) {
+export default function MovieCard({ movie, reload, noshow }) {
 	const { classes } = useStyles();
 
 	return (
@@ -50,17 +49,23 @@ export default function MovieCard({ movie, reload }) {
 						data-testid={"movie-poster"}
 					/>
 				</Anchor>
-				<Favorite movie={movie} classes={classes.rating} reload={reload} />
-
+				<Favorite
+					movie={movie}
+					classes={classes.rating}
+					reload={reload}
+				/>
 			</Card.Section>
-			<Text
-				mt="xs"
-				color="dimmed"
-				size={12}
-				data-testid={"movie-release-date"}
-			>
-				{movie.release_date}
-			</Text>
+			{!noshow && (
+				<Text
+					mt="xs"
+					color="dimmed"
+					size={12}
+					data-testid={"movie-release-date"}
+				>
+					{movie.release_date}
+				</Text>
+			)}
+
 			<Text
 				fw={700}
 				mt="xs"
@@ -70,24 +75,28 @@ export default function MovieCard({ movie, reload }) {
 				{movie.title}
 			</Text>
 
-			<Rating
-				im={35}
-				ra={18}
-				color={"black"}
-				imdb={movie.vote_average}
-				rate={movie.popularity}
-			/>
+			{!noshow && (
+				<>
+					<Rating
+						im={35}
+						ra={18}
+						color={"black"}
+						imdb={movie.vote_average}
+						rate={movie.popularity}
+					/>
 
-			<Card.Section className={classes.footer}>
-				<Group position="apart">
-					<Text
-						fz="xs"
-						c="dimmed"
-					>
-						{movie.vote_count}
-					</Text>
-				</Group>
-			</Card.Section>
+					<Card.Section className={classes.footer}>
+						<Group position="apart">
+							<Text
+								fz="xs"
+								c="dimmed"
+							>
+								{movie.vote_count}
+							</Text>
+						</Group>
+					</Card.Section>
+				</>
+			)}
 		</Card>
 	);
 }
