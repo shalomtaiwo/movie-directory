@@ -43,9 +43,11 @@ export default function MovieCard({ movie, reload, noshow }) {
 			<Card.Section mb="sm">
 				<Anchor href={`/movies/${movie.id}`}>
 					<Image
-						src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+						src={movie.poster_path && `https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 						alt={movie.title}
 						w={185}
+						height={360}
+						withPlaceholder
 						data-testid={"movie-poster"}
 					/>
 				</Anchor>
