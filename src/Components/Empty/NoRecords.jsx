@@ -55,6 +55,11 @@ export default function NoRecords() {
 					mt={20}
 					width="70%"
 				/>
+				<Skeleton
+					height={80}
+					mt={20}
+					width="70%"
+				/>
 			</Flex>
 		</Container>
 	);
