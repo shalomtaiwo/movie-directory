@@ -40,19 +40,20 @@ export default function NoRecords() {
 				direction={"column"}
 			>
 				<Skeleton
-					height={8}
-					radius="xl"
+					height={20}
 				/>
 				<Skeleton
-					height={8}
-					mt={6}
-					radius="xl"
+					height={40}
+					mt={20}
 				/>
 				<Skeleton
-					height={8}
-					mt={6}
+					height={60}
+					mt={20}
+				/>
+				<Skeleton
+					height={70}
+					mt={20}
 					width="70%"
-					radius="xl"
 				/>
 			</Flex>
 		</Container>
