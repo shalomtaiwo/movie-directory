@@ -6,6 +6,7 @@ import {
 	Text,
 	rem,
 	Anchor,
+	Container,
 } from "@mantine/core";
 import Rating from "../Rating/Rating";
 import Favorite from "../Favorite/Favorite";
@@ -42,14 +43,19 @@ export default function MovieCard({ movie, reload, noshow }) {
 		>
 			<Card.Section mb="sm">
 				<Anchor href={`/movies/${movie.id}`}>
-					<Image
-						src={movie.poster_path && `https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-						alt={movie.title}
-						w={185}
-						height={!movie.poster_path && 340}
-						withPlaceholder
-						data-testid={"movie-poster"}
-					/>
+					<Container w={'100%'} p={0}>
+						<img
+							src={
+								movie.poster_path ?
+								`https://image.tmdb.org/t/p/w500${movie.poster_path}`
+								:
+								'https://dummyimage.com/600x900/000/fff'
+							}
+							alt={movie.title}
+							width={'100%'}
+							data-testid={"movie-poster"}
+						/>
+					</Container>
 				</Anchor>
 				<Favorite
 					movie={movie}
