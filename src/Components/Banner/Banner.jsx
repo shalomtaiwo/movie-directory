@@ -54,6 +54,8 @@ const useStyles = createStyles((theme) => ({
 
 		[theme.fn.smallerThan("md")]: {
 			marginRight: 0,
+			paddingTop: `calc(${theme.spacing.xl} * 7)`,
+			display: ' block'
 		},
 	},
 
@@ -77,7 +79,7 @@ const useStyles = createStyles((theme) => ({
 		maxWidth: rem(500),
 
 		[theme.fn.smallerThan("md")]: {
-			maxWidth: "100%",
+			maxWidth: "310px",
 		},
 	},
 

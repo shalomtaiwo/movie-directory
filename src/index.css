@@ -37,7 +37,7 @@ html {
 .dropdown {
   display: inline-block;
   position: absolute;
-  height: 80%;
+  height: 450px;
   max-width: 500px;
   top: 70px;
   overflow-y: auto;
