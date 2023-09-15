@@ -43,9 +43,14 @@ const useStyles = createStyles((theme) => ({
 	},
 
 	content: {
-		paddingTop: `calc(${theme.spacing.xl} * 7)`,
+		paddingTop: `calc(${theme.spacing.xl} * 5)`,
 		paddingBottom: `calc(${theme.spacing.xl} * 2)`,
 		marginRight: `calc(${theme.spacing.xl} * 3)`,
+		display: 'flex',
+		flexDirection: 'column',
+		alignContent: 'center',
+		justifyContent: 'center',
+		height: '100%',
 
 		[theme.fn.smallerThan("md")]: {
 			marginRight: 0,
