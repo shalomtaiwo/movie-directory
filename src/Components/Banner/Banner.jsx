@@ -167,7 +167,7 @@ export function Banner({ children }) {
 
 	if (loading)
 		return (
-			<Center>
+			<Center mt={30}>
 				<Loader color="red" />
 			</Center>
 		);
