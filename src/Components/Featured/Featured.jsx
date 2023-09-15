@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 import { ServerError } from "../Empty/Error";
 import { IconChevronRight } from "@tabler/icons-react";
+import NoRecords from "../Empty/NoRecords";
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -29,7 +30,7 @@ const useStyles = createStyles((theme) => ({
 	},
 
 	content: {
-		paddingTop: `calc(${theme.spacing.xl} * 3)`,
+		paddingTop: `calc(${theme.spacing.xl} * 2)`,
 		paddingBottom: `calc(${theme.spacing.xl} * 2)`,
 
 		[theme.fn.smallerThan("md")]: {
@@ -87,7 +88,7 @@ const Featured = () => {
 	});
 	const movieData = data?.results;
 
-	if (loading) return <p>Loading...</p>;
+	if (loading) return <NoRecords />;
 	if (error) return <ServerError error={error.status} />;
 
 	return (

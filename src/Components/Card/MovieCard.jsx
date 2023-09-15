@@ -46,7 +46,7 @@ export default function MovieCard({ movie, reload, noshow }) {
 						src={movie.poster_path && `https://image.tmdb.org/t/p/w500${movie.poster_path}`}
 						alt={movie.title}
 						w={185}
-						height={340}
+						height={!movie.poster_path && 340}
 						withPlaceholder
 						data-testid={"movie-poster"}
 					/>
