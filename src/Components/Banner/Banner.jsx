@@ -54,7 +54,7 @@ const useStyles = createStyles((theme) => ({
 
 		[theme.fn.smallerThan("md")]: {
 			marginRight: 0,
-			paddingTop: `calc(${theme.spacing.xl} * 7)`,
+			paddingTop: `calc(${theme.spacing.xl} * 10)`,
 			display: ' block'
 		},
 	},
