@@ -105,7 +105,7 @@ const Featured = () => {
 							<Title size={36}>Featured Movie</Title>
 							<Anchor
 								color="red"
-								href="/movies"
+								// href="/movies"
 							>
 								<Button
 									variant="unstyled"
