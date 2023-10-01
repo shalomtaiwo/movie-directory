@@ -110,6 +110,7 @@ const Featured = () => {
 								<Button
 									variant="unstyled"
 									style={{color: '#BE123C'}}
+									id="button1"
 									rightIcon={<IconChevronRight color="#BE123C" size={16}/>}
 								>
 									See More
